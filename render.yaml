@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: hermes-agent
+    runtime: docker
+    plan: 1c-2g
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    disk:
+      name: hermes-data
+      mountPath: /opt/data
+      sizeGB: 1
+    envVars:
+      - key: HERMES_HOME
+        value: /opt/data
+      - key: TZ
+        value: Asia/Dhaka
